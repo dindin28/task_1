@@ -1,16 +1,19 @@
 #include <task_1/date.h>
 #include <task_1/participant.h>
 #include <task_1/performance.h>
+#include <task_1/competition.h>
 
 #include <iostream>
 
 int main()
 {
   Date date;
-  Participant participant;
   std::cout << date << std::endl;
-  participant.Print();
+  Participant participant;
+  std::cout << participant << std::endl;
   Performance performance;
-  performance.Print();
+  std::cout << performance << std::endl;
+  Competition competition;
+  competition.Print();
   return 0;
 }

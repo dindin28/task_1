@@ -19,6 +19,7 @@ set(srcs
     ${sources_path}/date.cpp
     ${sources_path}/participant.cpp
     ${sources_path}/performance.cpp
+    ${sources_path}/competition.cpp
     ${sources_path}/main.cpp)
 
 #========================

@@ -3,9 +3,7 @@
 
 #include <iostream>
 
-#include "task_1/date.h"
-#include "task_1/participant.h"
-//#include <task_1/date.h>
+#include <task_1/date.h>
 
 class Participant
 {
@@ -31,6 +29,6 @@ public:
 private:
   char *name_, *surname_;
   Date date_;
-}; //Class (Date)
+}; //Class (Participant)
 
 #endif //Header Guard

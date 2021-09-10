@@ -31,9 +31,9 @@ private:
   // performance_type_= 0(false) => team performance
   // performance_type_= 1(true) => individual performance
   bool performance_type_;
-  static int number_of_competitions_;
+  static int number_of_performance_;
   Participant participant_;
   int sequence_number_, result_;
-}; //Class (Date)
+}; //Class (Performance)
 
 #endif //Header Guard

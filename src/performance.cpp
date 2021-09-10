@@ -1,6 +1,7 @@
 #include <task_1/performance.h>
 
-int Performance::number_of_competitions_ = 0;
+//Initialization of static variables
+int Performance::number_of_performance_ = 0;
 
 // performance_type_= 0(false) => team performance
 // performance_type_= 1(true) => individual performance
@@ -11,7 +12,7 @@ Performance::Performance()
       sequence_number_(1),
       result_(100)
 {
-  number_of_competitions_++;
+  number_of_performance_++;
 }
 
 Performance::Performance(bool performance_type, Participant participant, int sequence_number, int result)
@@ -20,7 +21,7 @@ Performance::Performance(bool performance_type, Participant participant, int seq
       sequence_number_(sequence_number),
       result_(result)
 {
-  number_of_competitions_++;
+  number_of_performance_++;
 }
 
 Performance::Performance(const Performance &copy)
@@ -29,14 +30,14 @@ Performance::Performance(const Performance &copy)
       sequence_number_(copy.sequence_number_),
       result_(copy.result_)
 {
-  number_of_competitions_++;
+  number_of_performance_++;
 }
 
 Performance::~Performance() {}
 
 //Getters
 bool Performance::GetPerformanceType() { return performance_type_; }
-int Performance::GetNumberOfCompetitions() { return number_of_competitions_; }
+int Performance::GetNumberOfCompetitions() { return number_of_performance_; }
 Participant Performance::GetParticipant() { return participant_; }
 int Performance::GetSequenceNumber() { return sequence_number_; }
 int Performance::GetResult() { return result_; }
@@ -68,7 +69,7 @@ Performance &Performance::SetResult(int result)
 
 void Performance::Print()
 {
-  std::cout << number_of_competitions_ << "`s ";
+  std::cout << number_of_performance_ << "`s ";
   // performance_type_= 0(false) => team performance
   // performance_type_= 1(true) => individual performance
   if (performance_type_ == false)
@@ -84,7 +85,7 @@ void Performance::Print()
 
 std::ostream &operator<<(std::ostream &out, const Performance &obj)
 {
-  out << obj.number_of_competitions_ << "`s ";
+  out << obj.number_of_performance_ << "`s ";
   // performance_type_= 0(false) => team performance
   // performance_type_= 1(true) => individual performance
   if (obj.performance_type_ == false)
