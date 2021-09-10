@@ -10,6 +10,7 @@ public:
   Competition(const char *name);
   Competition(const char *name, Performance *performance_pointer, int performance_size);
   Competition(const Competition &copy);
+  Competition &operator=(const Competition &copy);
   ~Competition();
 
   void AddPerformance(const Performance &performance);
@@ -19,6 +20,9 @@ public:
 
   void Print();
   void PrintShortly();
+
+  friend std::ostream& operator<< (std::ostream &out, const Competition &obj);
+  friend std::istream& operator>> (std::istream &in, Competition &obj);
 
 private:
   char *name_;

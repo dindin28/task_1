@@ -99,3 +99,23 @@ std::ostream &operator<<(std::ostream &out, const Performance &obj)
   out << obj.participant_ << "(" << obj.sequence_number_ << ", " << obj.result_ << ")";
   return out;
 }
+
+std::istream &operator>>(std::istream &in, Performance &obj)
+{
+  //Performance_type
+  std::cout << "Enter new performance type (1 - individual; 0 - team): ";
+  in >> obj.performance_type_;
+
+  //Participant
+  in >> obj.participant_;
+
+  //Sequence number
+  std::cout << "Enter new sequence number for participant: ";
+  in >> obj.sequence_number_;
+
+  //Result
+  std::cout << "Enter new result for participant: ";
+  in >> obj.result_;
+
+  return in;
+}

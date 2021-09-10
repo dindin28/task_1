@@ -68,3 +68,14 @@ std::ostream& operator<< (std::ostream &out, const Date &obj)
             << std::setw(4) << obj.year_;
     return out;
 }
+
+std::istream& operator>> (std::istream &in, Date &obj)
+{
+  std::cout << "Enter new day of date: ";
+  in >> obj.day_;
+  std::cout << "Enter new month of date: ";
+  in >> obj.month_;
+  std::cout << "Enter new year of date: ";
+  in >> obj.year_;
+  return in;
+}

@@ -1,6 +1,7 @@
 #include <task_1/participant.h>
 
 #include <cstring>
+#include <string>
 
 Participant::Participant()
     : date_(15, 8, 2002)
@@ -25,6 +26,30 @@ Participant::Participant(const Participant &copy)
 {
   strcpy(name_, copy.name_);
   strcpy(surname_, copy.surname_);
+}
+
+Participant &Participant::operator=(const Participant &copy)
+{
+  //Name
+  if (strlen(name_) != 0)
+  {
+    delete[] name_;
+  }
+  name_ = new char[strlen(copy.name_)];
+  strcpy(name_, copy.name_);
+
+  //Surname
+  if (strlen(surname_) != 0)
+  {
+    delete[] surname_;
+  }
+  surname_ = new char[strlen(copy.surname_)];
+  strcpy(name_, copy.surname_);
+
+  //Date
+  date_ = copy.date_;
+
+  return *this;
 }
 
 Participant::~Participant()
@@ -86,4 +111,36 @@ std::ostream &operator<<(std::ostream &out, const Participant &obj)
       << obj.surname_ << " ("
       << obj.date_ << ")";
   return out;
+}
+
+std::istream &operator>>(std::istream &in, Participant &obj)
+{
+  std::string buff_string;
+
+  //Name
+  std::cout << "Enter new name of participant: ";
+  in >> buff_string;
+
+  if (strlen(obj.name_) != 0)
+  {
+    delete[] obj.name_;
+  }
+  obj.name_ = new char[buff_string.length()];
+  strcpy(obj.name_, buff_string.c_str());
+
+  //Surname
+  std::cout << "Enter new surname of participant: ";
+  in >> buff_string;
+
+  if (strlen(obj.surname_) != 0)
+  {
+    delete[] obj.surname_;
+  }
+  obj.surname_ = new char[buff_string.length()];
+  strcpy(obj.surname_, buff_string.c_str());
+
+  //Date
+  in >> obj.date_;
+
+  return in;
 }

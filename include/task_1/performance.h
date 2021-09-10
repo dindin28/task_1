@@ -25,7 +25,9 @@ public:
   Performance &SetResult(int result);
 
   void Print();
+
   friend std::ostream& operator<< (std::ostream &out, const Performance &obj);
+  friend std::istream& operator>> (std::istream &in, Performance &obj);
 
 private:
   // performance_type_= 0(false) => team performance

@@ -11,6 +11,7 @@ public:
   Participant();
   Participant(const char *name, const char *surname, const Date &date);
   Participant(const Participant &copy);
+  Participant &operator=(const Participant &copy);
   ~Participant();
 
   //Getters
@@ -24,7 +25,9 @@ public:
   Participant &SetDate(const Date &date);
 
   void Print();
+
   friend std::ostream &operator<<(std::ostream &out, const Participant &obj);
+  friend std::istream &operator>>(std::istream &in, Participant &obj);
 
 private:
   char *name_, *surname_;

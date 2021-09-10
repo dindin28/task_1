@@ -22,7 +22,9 @@ public:
   Date &SetYear(int year);
 
   void Print();
+
   friend std::ostream& operator<< (std::ostream &out, const Date &obj);
+  friend std::istream& operator>> (std::istream &in, Date &obj);
 
 private:
   int day_, month_, year_;
