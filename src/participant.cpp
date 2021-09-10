@@ -5,6 +5,10 @@
 Participant::Participant()
     : date_(15, 8, 2002)
 {
+  const char *name = "Dima";
+  const char *surname = "Shtrikker";
+  name_ = new char[strlen(name)];
+  surname_ = new char[strlen(surname)];
   strcpy(name_, "Dima");
   strcpy(surname_, "Shtrikker");
 }
@@ -27,11 +31,11 @@ Participant::~Participant()
 {
   if (strlen(name_) != 0)
   {
-    free(name_);
+    delete name_;
   }
   if (strlen(surname_) != 0)
   {
-    free(surname_);
+    delete surname_;
   }
 }
 
@@ -45,7 +49,7 @@ Participant &Participant::SetName(const char *name)
 {
   if (strlen(name_) != 0)
   {
-    free(name_);
+    delete name_;
   }
   strcpy(name_, name);
   return *this;
@@ -55,7 +59,7 @@ Participant &Participant::SetSurname(const char *surname)
 {
   if (strlen(surname_) != 0)
   {
-    free(surname_);
+    delete surname_;
   }
   strcpy(surname_, surname);
   return *this;
@@ -69,14 +73,14 @@ Participant &Participant::SetDate(const Date &date)
 
 void Participant::Print()
 {
-  std::cout << name_ << " : "
+  std::cout << name_ << " "
             << surname_ << " ("
             << date_ << ")" << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &out, const Participant &obj)
 {
-  out << obj.name_ << " : "
+  out << obj.name_ << " "
             << obj.surname_ << " ("
             << obj.date_ << ")";
   return out;

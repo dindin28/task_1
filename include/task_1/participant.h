@@ -2,7 +2,10 @@
 #define _TASK_1_INCLUDE_TASK_1_PARTICIPANT_H_
 
 #include <iostream>
-#include <task_1/date.h>
+
+#include "task_1/date.h"
+#include "task_1/participant.h"
+//#include <task_1/date.h>
 
 class Participant
 {
