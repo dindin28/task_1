@@ -18,7 +18,7 @@ void EditDate(Date &date)
       std::cout << "2) SetMonth" << std::endl;
       std::cout << "3) SetYear" << std::endl;
       std::cout << "4) Enter new date" << std::endl;
-      std::cout << "0) Exit" << std::endl;
+      std::cout << "0) Previous menu" << std::endl;
       std::cin >> ch;
     } while (ch != 0 && ch != 1 && ch != 2 && ch != 3 && ch != 4);
     switch (ch)
@@ -75,7 +75,7 @@ void EditParticipant(Participant &participant)
       std::cout << "1) SetName" << std::endl;
       std::cout << "2) SetSurname" << std::endl;
       std::cout << "3) SetDate" << std::endl;
-      std::cout << "0) Exit" << std::endl;
+      std::cout << "0) Previous menu" << std::endl;
       std::cin >> ch;
     } while (ch != 0 && ch != 1 && ch != 2 && ch != 3);
     switch (ch)
@@ -124,7 +124,7 @@ void EditPerformance(Performance &performance)
       std::cout << "2) SetParticipant" << std::endl;
       std::cout << "3) SetSequenceNumber" << std::endl;
       std::cout << "4) SetResult" << std::endl;
-      std::cout << "0) Exit" << std::endl;
+      std::cout << "0) Previous menu" << std::endl;
       std::cin >> ch;
     } while (ch != 0 && ch != 1 && ch != 2 && ch != 3 && ch != 4);
     switch (ch)
@@ -140,8 +140,7 @@ void EditPerformance(Performance &performance)
     } //Case (1)
     case (2):
     {
-      std::cout << "Current participant: " << performance.GetParticipant() << std::endl
-                << "Enter new: ";
+      std::cout << "Current participant: " << performance.GetParticipant() << std::endl;
       Participant participant;
       std::cin >> participant;
       performance.SetParticipant(participant);
@@ -189,7 +188,7 @@ void EditCompetition(Competition &competition)
       std::cout << "1) Switch (Print : PrintShortly)" << std::endl;
       std::cout << "2) SetName" << std::endl;
       std::cout << "3) AddPerformance" << std::endl;
-      std::cout << "0) Exit" << std::endl;
+      std::cout << "0) Previous menu" << std::endl;
       std::cin >> ch;
     } while (ch != 0 && ch != 1 && ch != 2 && ch != 3);
     switch (ch)

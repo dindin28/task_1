@@ -17,6 +17,8 @@ Participant::Participant()
 Participant::Participant(const char *name, const char *surname, const Date &date)
     : date_(date)
 {
+  name_ = new char[strlen(name)];
+  surname_ = new char[strlen(surname)];
   strcpy(name_, name);
   strcpy(surname_, surname);
 }
@@ -24,6 +26,8 @@ Participant::Participant(const char *name, const char *surname, const Date &date
 Participant::Participant(const Participant &copy)
     : date_(copy.date_)
 {
+  name_ = new char[strlen(copy.name_)];
+  surname_ = new char[strlen(copy.surname_)];
   strcpy(name_, copy.name_);
   strcpy(surname_, copy.surname_);
 }
