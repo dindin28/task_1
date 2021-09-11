@@ -48,7 +48,7 @@ Participant &Participant::operator=(const Participant &copy)
     delete[] surname_;
   }
   surname_ = new char[strlen(copy.surname_)];
-  strcpy(name_, copy.surname_);
+  strcpy(surname_, copy.surname_);
 
   //Date
   date_ = copy.date_;

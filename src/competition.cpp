@@ -95,7 +95,10 @@ void Competition::AddPerformance(const Performance &performance)
     new_ptr[i] = performance_pointer_[i];
   }
   new_ptr[performance_size_] = performance;
-  delete[] performance_pointer_;
+  if (performance_size_ != 0)
+  {
+    delete[] performance_pointer_;
+  }
   performance_pointer_ = new_ptr;
   performance_size_++;
 }
@@ -117,7 +120,7 @@ void Competition::Print()
   std::cout << name_ << std::endl;
   for (int i = 0; i < performance_size_; i++)
   {
-    std::cout << i + 1 << ") " << performance_pointer_[i] << std::endl;
+    std::cout << i + 1 << ". " << performance_pointer_[i] << std::endl;
   }
 }
 
@@ -126,7 +129,7 @@ void Competition::PrintShortly()
   std::cout << name_ << std::endl;
   for (int i = 0; i < performance_size_; i++)
   {
-    std::cout << i + 1 << ") " << performance_pointer_[i].GetParticipant().GetSurname() << std::endl;
+    std::cout << i + 1 << ". " << performance_pointer_[i].GetParticipant().GetSurname() << std::endl;
   }
 }
 

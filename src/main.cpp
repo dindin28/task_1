@@ -185,6 +185,7 @@ void EditCompetition(Competition &competition)
       {
         competition.PrintShortly();
       }
+      std::cout << std::endl;
       std::cout << "1) Switch (Print : PrintShortly)" << std::endl;
       std::cout << "2) SetName" << std::endl;
       std::cout << "3) AddPerformance" << std::endl;

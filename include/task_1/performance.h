@@ -9,6 +9,7 @@ public:
   Performance();
   Performance(bool performance_type, Participant participant, int sequence_number, int result);
   Performance(const Performance &copy);
+  Performance &operator=(const Performance &copy);
   ~Performance();
 
   //Getters

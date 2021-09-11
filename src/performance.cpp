@@ -33,6 +33,16 @@ Performance::Performance(const Performance &copy)
   number_of_performance_++;
 }
 
+Performance &Performance::operator=(const Performance &copy)
+{
+  performance_type_ = copy.performance_type_;
+  participant_ = copy.participant_;
+  sequence_number_ = copy.sequence_number_;
+  result_ = copy.result_;
+
+  return *this;
+}
+
 Performance::~Performance() {}
 
 //Getters
@@ -69,32 +79,30 @@ Performance &Performance::SetResult(int result)
 
 void Performance::Print()
 {
-  std::cout << number_of_performance_ << "`s ";
   // performance_type_= 0(false) => team performance
   // performance_type_= 1(true) => individual performance
   if (performance_type_ == false)
   {
-    std::cout << "team performance. ";
+    std::cout << "Team performance. ";
   }
   else
   {
-    std::cout << "individual performance. ";
+    std::cout << "Individual performance. ";
   }
   std::cout << participant_ << "(" << sequence_number_ << ", " << result_ << ")" << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &out, const Performance &obj)
 {
-  out << obj.number_of_performance_ << "`s ";
   // performance_type_= 0(false) => team performance
   // performance_type_= 1(true) => individual performance
   if (obj.performance_type_ == false)
   {
-    out << "team performance. ";
+    out << "Team performance. ";
   }
   else
   {
-    out << "individual performance. ";
+    out << "Individual performance. ";
   }
   out << obj.participant_ << "(" << obj.sequence_number_ << ", " << obj.result_ << ")";
   return out;
