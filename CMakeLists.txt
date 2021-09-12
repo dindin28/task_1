@@ -6,6 +6,11 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 #========================
+#PVS-Studio option
+#========================
+option(ANALYZE "Analyze code with PVS-Studio" OFF)
+
+#========================
 #Headers
 #========================
 set(headers_path "${PROJECT_SOURCE_DIR}/include")
@@ -13,14 +18,7 @@ set(headers_path "${PROJECT_SOURCE_DIR}/include")
 #========================
 #Sources
 #========================
-set(sources_path "${PROJECT_SOURCE_DIR}/src")
-
-set(srcs
-    ${sources_path}/date.cpp
-    ${sources_path}/participant.cpp
-    ${sources_path}/performance.cpp
-    ${sources_path}/competition.cpp
-    ${sources_path}/main.cpp)
+file(GLOB srcs "src/*.cpp")
 
 #========================
 #Building executable
@@ -32,3 +30,13 @@ target_include_directories(
   PRIVATE
     ${headers_path}
 )
+
+
+if(ANALYZE)
+  include(PVS-Studio.cmake)
+  pvs_studio_add_target(TARGET example1.analyze ALL
+                        OUTPUT FORMAT errorfile
+                        ANALYZE ${PROJECT_NAME}
+                        MODE GA:1,2
+                        LOG target.err)
+endif()
