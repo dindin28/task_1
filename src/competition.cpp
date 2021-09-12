@@ -7,17 +7,17 @@
 #include <string>
 
 Competition::Competition()
-    : performance_size_(0)
+    : performance_size_(0), performance_pointer_(nullptr)
 {
   const char *name = "Olympic Games";
-  name_ = new char[strlen(name)];
+  name_ = new char[strlen(name) + 1];
   strcpy(name_, name);
 }
 
 Competition::Competition(const char *name)
-    : performance_size_(0)
+    : performance_size_(0), performance_pointer_(nullptr)
 {
-  name_ = new char[strlen(name)];
+  name_ = new char[strlen(name) + 1];
   strcpy(name_, name);
 }
 
@@ -25,7 +25,7 @@ Competition::Competition(const char *name, Performance *performance_pointer, int
     : performance_size_(performance_size)
 {
   //copy name
-  name_ = new char[strlen(name)];
+  name_ = new char[strlen(name) + 1];
   strcpy(name_, name);
 
   //copy performance_pointer
@@ -40,7 +40,7 @@ Competition::Competition(const Competition &copy)
     : performance_size_(copy.performance_size_)
 {
   //copy name
-  name_ = new char[strlen(copy.name_)];
+  name_ = new char[strlen(copy.name_) + 1];
   strcpy(name_, copy.name_);
 
   //copy performance_pointer
@@ -53,27 +53,30 @@ Competition::Competition(const Competition &copy)
 
 Competition &Competition::operator=(const Competition &copy)
 {
-  //Name
-  if (strlen(name_) != 0)
+  if (this != &copy)
   {
-    delete[] name_;
-  }
-  name_ = new char[strlen(copy.name_)];
-  strcpy(name_, copy.name_);
+    //Name
+    if (strlen(name_) != 0)
+    {
+      delete[] name_;
+    }
+    name_ = new char[strlen(copy.name_) + 1];
+    strcpy(name_, copy.name_);
 
-  //Performance pointer
-  if (performance_size_ != 0)
-  {
-    delete[] performance_pointer_;
-  }
-  performance_pointer_ = new Performance[copy.performance_size_];
-  for (int i = 0; i < copy.performance_size_; i++)
-  {
-    performance_pointer_[i] = copy.performance_pointer_[i];
-  }
+    //Performance pointer
+    if (performance_size_ != 0)
+    {
+      delete[] performance_pointer_;
+    }
+    performance_pointer_ = new Performance[copy.performance_size_];
+    for (int i = 0; i < copy.performance_size_; i++)
+    {
+      performance_pointer_[i] = copy.performance_pointer_[i];
+    }
 
-  //Performance size
-  performance_size_ = copy.performance_size_;
+    //Performance size
+    performance_size_ = copy.performance_size_;
+  } //Condition (this != &copy)
 
   return *this;
 }
@@ -113,7 +116,7 @@ Competition &Competition::SetName(const char *name)
   {
     delete[] name_;
   }
-  name_ = new char[strlen(name)];
+  name_ = new char[strlen(name) + 1];
   strcpy(name_, name);
   return *this;
 }
@@ -157,7 +160,7 @@ std::istream &operator>>(std::istream &in, Competition &obj)
   {
     delete[] obj.name_;
   }
-  obj.name_ = new char[buff_string.length()];
+  obj.name_ = new char[buff_string.length() + 1];
   strcpy(obj.name_, buff_string.c_str());
 
   return in;

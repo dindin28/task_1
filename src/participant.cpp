@@ -11,8 +11,8 @@ Participant::Participant()
 {
   const char *name = "Dima";
   const char *surname = "Shtrikker";
-  name_ = new char[strlen(name)];
-  surname_ = new char[strlen(surname)];
+  name_ = new char[strlen(name) + 1];
+  surname_ = new char[strlen(surname) + 1];
   strcpy(name_, name);
   strcpy(surname_, surname);
 }
@@ -20,8 +20,8 @@ Participant::Participant()
 Participant::Participant(const char *name, const char *surname, const Date &date)
     : date_(date)
 {
-  name_ = new char[strlen(name)];
-  surname_ = new char[strlen(surname)];
+  name_ = new char[strlen(name) + 1];
+  surname_ = new char[strlen(surname) + 1];
   strcpy(name_, name);
   strcpy(surname_, surname);
 }
@@ -29,32 +29,35 @@ Participant::Participant(const char *name, const char *surname, const Date &date
 Participant::Participant(const Participant &copy)
     : date_(copy.date_)
 {
-  name_ = new char[strlen(copy.name_)];
-  surname_ = new char[strlen(copy.surname_)];
+  name_ = new char[strlen(copy.name_) + 1];
+  surname_ = new char[strlen(copy.surname_) + 1];
   strcpy(name_, copy.name_);
   strcpy(surname_, copy.surname_);
 }
 
 Participant &Participant::operator=(const Participant &copy)
 {
-  //Name
-  if (strlen(name_) != 0)
+  if (this != &copy)
   {
-    delete[] name_;
-  }
-  name_ = new char[strlen(copy.name_)];
-  strcpy(name_, copy.name_);
+    //Name
+    if (strlen(name_) != 0)
+    {
+      delete[] name_;
+    }
+    name_ = new char[strlen(copy.name_) + 1];
+    strcpy(name_, copy.name_);
 
-  //Surname
-  if (strlen(surname_) != 0)
-  {
-    delete[] surname_;
-  }
-  surname_ = new char[strlen(copy.surname_)];
-  strcpy(surname_, copy.surname_);
+    //Surname
+    if (strlen(surname_) != 0)
+    {
+      delete[] surname_;
+    }
+    surname_ = new char[strlen(copy.surname_) + 1];
+    strcpy(surname_, copy.surname_);
 
-  //Date
-  date_ = copy.date_;
+    //Date
+    date_ = copy.date_;
+  } //Condition(this != &copy)
 
   return *this;
 }
@@ -83,7 +86,7 @@ Participant &Participant::SetName(const char *name)
   {
     delete[] name_;
   }
-  name_ = new char[strlen(name)];
+  name_ = new char[strlen(name) + 1];
   strcpy(name_, name);
   return *this;
 }
@@ -94,7 +97,7 @@ Participant &Participant::SetSurname(const char *surname)
   {
     delete[] surname_;
   }
-  surname_ = new char[strlen(surname)];
+  surname_ = new char[strlen(surname) + 1];
   strcpy(surname_, surname);
   return *this;
 }
@@ -132,7 +135,7 @@ std::istream &operator>>(std::istream &in, Participant &obj)
   {
     delete[] obj.name_;
   }
-  obj.name_ = new char[buff_string.length()];
+  obj.name_ = new char[buff_string.length() + 1];
   strcpy(obj.name_, buff_string.c_str());
 
   //Surname
@@ -143,7 +146,7 @@ std::istream &operator>>(std::istream &in, Participant &obj)
   {
     delete[] obj.surname_;
   }
-  obj.surname_ = new char[buff_string.length()];
+  obj.surname_ = new char[buff_string.length() + 1];
   strcpy(obj.surname_, buff_string.c_str());
 
   //Date
